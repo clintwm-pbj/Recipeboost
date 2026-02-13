@@ -1,0 +1,8 @@
+{
+“name”: “recipeboost”,
+“version”: “1.0.0”,
+“description”: “Recipe SEO Optimizer”,
+“dependencies”: {
+“@anthropic-ai/sdk”: “^0.32.0”
+}
+}
