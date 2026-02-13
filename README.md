@@ -1,2 +1,2 @@
 # Recipeboost
-Recipe SEO Optimzer
+Recipe SEO Optimzer 
