@@ -1,24 +1,8 @@
-9:58:20 PM: build-image version: fbc53cb3bf0a666da624bbd8817fbc7307dd7700 (noble-new-builds)
-9:58:20 PM: buildbot version: d3dcd24b55061e0089c7aaff1e720664eb037589
-9:58:20 PM: Building with cache
-9:58:20 PM: Starting to prepare the repo for build
-9:58:20 PM: Preparing Git Reference refs/heads/main
-9:58:21 PM: Custom functions path detected. Proceeding with the specified path: 'netlify/functions'
-9:58:21 PM: Starting to install dependencies
-9:58:21 PM: mise ~/.config/mise/config.toml tools: python@3.14.3
-9:58:22 PM: mise ~/.config/mise/config.toml tools: ruby@3.4.8
-9:58:22 PM: mise ~/.config/mise/config.toml tools: go@1.26.0
-9:58:22 PM: v22.22.0 is already installed.
-9:58:23 PM: Failed during stage 'Install dependencies': dependency_installation script returned non-zero exit code: 1
-9:58:23 PM: Now using node v22.22.0 (npm v10.9.4)
-9:58:23 PM: Enabling Node.js Corepack
-9:58:23 PM: No npm workspaces detected
-9:58:23 PM: Installing npm packages using npm version 10.9.4
-9:58:23 PM: npm error code EJSONPARSE
-9:58:23 PM: npm error path /opt/build/repo/package.json
-9:58:23 PM: npm error JSON.parse Expected property name or '}' in JSON at position 2 (line 2 column 1) while parsing near "{\n"name”: "recipeboost..."
-9:58:23 PM: npm error JSON.parse Failed to parse JSON data.
-9:58:23 PM: npm error JSON.parse Note: package.json must be actual JSON, not just JavaScript.
-9:58:23 PM: npm error A complete log of this run can be found in: /opt/buildhome/.npm/_logs/2026-02-13T05_58_23_271Z-debug-0.log
-9:58:23 PM: Error during npm install
-9:58:23 PM: Failing build: Failed to install dependencies
+{
+  "name": "recipeboost",
+  "version": "1.0.0",
+  "description": "Recipe SEO Optimizer",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0"
+  }
+}
