@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecipeBoost - AI-Powered Recipe SEO Optimizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'DM Sans', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        min-height: 100vh;
+        padding: 2rem 1rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .header {
+        text-align: center;
+        margin-bottom: 3rem;
+        animation: fadeInDown 0.8s ease-out;
+    }
+
+    .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        letter-spacing: -0.02em;
+    }
+
+    .tagline {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 1.3rem;
+        font-weight: 500;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .main-card {
+        background: white;
+        border-radius: 25px;
+        padding: 3rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .input-section {
+        margin-bottom: 2rem;
+    }
+
+    .input-label {
+        display: block;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
+    }
+
+    .url-input {
+        width: 100%;
+        padding: 1.25rem;
+        font-size: 1.1rem;
+        border: 3px solid #e2e8f0;
+        border-radius: 15px;
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.3s ease;
+        outline: none;
+    }
+
+    .url-input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    }
+
+    .analyze-btn {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1.5rem;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .analyze-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
+    }
+
+    .analyze-btn:active {
+        transform: translateY(0);
+    }
+
+    .analyze-btn:disabled {
+        background: #cbd5e0;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 3rem;
+        display: none;
+    }
+
+    .loading.active {
+        display: block;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .spinner {
+        border: 4px solid #f3f4f6;
+        border-top: 4px solid #667eea;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+    }
+
+    .results {
+        display: none;
+        animation: fadeIn 0.5s ease;
+    }
+
+    .results.active {
+        display: block;
+    }
+
+    .result-section {
+        background: #f7fafc;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 1.5rem;
+        border-left: 5px solid #667eea;
+    }
+
+    .result-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .result-content {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        max-height: 400px;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    .copy-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+        background: #5568d3;
+    }
+
+    .copy-btn.copied {
+        background: #48bb78;
+    }
+
+    .seo-tips {
+        list-style: none;
+        padding: 0;
+    }
+
+    .seo-tips li {
+        background: white;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        border-radius: 10px;
+        border-left: 4px solid #48bb78;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .tip-icon {
+        background: #48bb78;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: #667eea;
+        color: white;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-left: 0.5rem;
+    }
+
+    .demo-notice {
+        background: #fef3c7;
+        border: 2px solid #f59e0b;
+        border-radius: 15px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .demo-notice strong {
+        color: #92400e;
+        font-size: 1.1rem;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .pricing-teaser {
+        background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .pricing-teaser h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .pricing-teaser .price {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-teaser .price-period {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+</style>
+```
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">🍳 RecipeBoost</h1>
+            <p class="tagline">AI-Powered Recipe SEO & Schema Optimizer</p>
+        </div>
+
+```
+    <div class="main-card">
+        <div class="demo-notice">
+            <strong>⚡ DEMO VERSION</strong><br>
+            This is a working prototype that demonstrates AI-powered recipe optimization.<br>
+            Paste any recipe URL to see the magic!
+        </div>
+
+        <div class="input-section">
+            <label class="input-label">
+                📋 Paste Your Recipe URL
+            </label>
+            <input 
+                type="url" 
+                class="url-input" 
+                id="recipeUrl" 
+                placeholder="https://yourblog.com/recipes/amazing-chocolate-cake"
+                value="">
+        </div>
+
+        <button class="analyze-btn" id="analyzeBtn">
+            🚀 Optimize My Recipe
+        </button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="color: #667eea; font-weight: 600; font-size: 1.1rem;">
+                AI is analyzing your recipe...<br>
+                <small style="color: #718096;">Extracting ingredients, instructions, and optimizing for search engines</small>
+            </p>
+        </div>
+
+        <div class="results" id="results">
+            <div class="result-section">
+                <h3 class="result-title">
+                    📊 Schema Markup (JSON-LD)
+                    <span class="badge">Copy & Paste to Your Site</span>
+                </h3>
+                <div class="result-content" style="position: relative;">
+                    <button class="copy-btn" onclick="copyToClipboard('schemaCode', this)">Copy Code</button>
+                    <pre id="schemaCode" style="margin: 0; white-space: pre-wrap; padding-top: 2.5rem;"></pre>
+                </div>
+            </div>
+
+            <div class="result-section">
+                <h3 class="result-title">
+                    🎯 SEO Recommendations
+                </h3>
+                <ul class="seo-tips" id="seoTips"></ul>
+            </div>
+
+            <div class="result-section">
+                <h3 class="result-title">
+                    🗣️ AEO Optimization (Voice Search)
+                </h3>
+                <div id="aeoContent" style="background: white; padding: 1.5rem; border-radius: 10px;"></div>
+            </div>
+
+            <div class="result-section">
+                <h3 class="result-title">
+                    📱 Social Media Snippets
+                </h3>
+                <div class="result-content" style="position: relative;">
+                    <button class="copy-btn" onclick="copyToClipboard('socialCode', this)">Copy Code</button>
+                    <pre id="socialCode" style="margin: 0; white-space: pre-wrap; padding-top: 2.5rem;"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-teaser">
+            <h3>💎 Unlock Full Features</h3>
+            <div class="price">$29<span class="price-period">/month</span></div>
+            <p style="margin-bottom: 1.5rem;">Unlimited recipe optimizations, automatic schema injection, real-time SEO scoring, and more!</p>
+            <button style="background: white; color: #38a169; padding: 1rem 2rem; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1.1rem;">
+                Start Free Trial →
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const loading = document.getElementById('loading');
+    const results = document.getElementById('results');
+    const recipeUrlInput = document.getElementById('recipeUrl');
+
+    analyzeBtn.addEventListener('click', async () => {
+        const url = recipeUrlInput.value.trim();
+        
+        if (!url) {
+            alert('Please enter a recipe URL');
+            return;
+        }
+
+        // Show loading
+        loading.classList.add('active');
+        results.classList.remove('active');
+        analyzeBtn.disabled = true;
+
+        // Simulate API call with realistic delay
+        await new Promise(resolve => setTimeout(resolve, 2500));
+
+        // Generate demo results
+        generateResults(url);
+
+        // Hide loading, show results
+        loading.classList.remove('active');
+        results.classList.add('active');
+        analyzeBtn.disabled = false;
+
+        // Scroll to results
+        results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    function generateResults(url) {
+        // Extract recipe name from URL for demo
+        const recipeName = url.split('/').pop().replace(/-/g, ' ').replace(/\.\w+$/, '');
+        const capitalizedName = recipeName.split(' ').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+
+        // Generate Schema Markup
+        const schema = {
+            "@context": "https://schema.org",
+            "@type": "Recipe",
+            "name": capitalizedName || "Delicious Recipe",
+            "image": [
+                "https://example.com/photos/1x1/photo.jpg",
+                "https://example.com/photos/4x3/photo.jpg",
+                "https://example.com/photos/16x9/photo.jpg"
+            ],
+            "author": {
+                "@type": "Person",
+                "name": "Your Name"
+            },
+            "datePublished": new Date().toISOString().split('T')[0],
+            "description": "An amazing recipe that will delight your taste buds",
+            "prepTime": "PT20M",
+            "cookTime": "PT30M",
+            "totalTime": "PT50M",
+            "keywords": "recipe, cooking, delicious",
+            "recipeYield": "4 servings",
+            "recipeCategory": "Main Course",
+            "recipeCuisine": "American",
+            "nutrition": {
+                "@type": "NutritionInformation",
+                "calories": "420 calories"
+            },
+            "recipeIngredient": [
+                "2 cups flour",
+                "1 cup sugar",
+                "3 eggs",
+                "1/2 cup butter"
+            ],
+            "recipeInstructions": [
+                {
+                    "@type": "HowToStep",
+                    "name": "Mix",
+                    "text": "Mix all dry ingredients together",
+                    "url": url + "#step1"
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Bake",
+                    "text": "Bake at 350°F for 30 minutes",
+                    "url": url + "#step2"
+                }
+            ],
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "127"
+            }
+        };
+
+        document.getElementById('schemaCode').textContent = 
+            '<script type="application/ld+json">\n' +
+            JSON.stringify(schema, null, 2) +
+            '\n<\/script>';
+
+        // Generate SEO Tips
+        const seoTips = [
+            {
+                text: `Use "${capitalizedName}" in your page title and H1 heading`,
+                priority: 'high'
+            },
+            {
+                text: 'Add alt text to all recipe images describing the dish and cooking process',
+                priority: 'high'
+            },
+            {
+                text: 'Include cooking time, prep time, and total time in your intro paragraph',
+                priority: 'medium'
+            },
+            {
+                text: 'Create a FAQ section answering common questions like "Can I substitute X?" or "How do I store this?"',
+                priority: 'medium'
+            },
+            {
+                text: 'Add internal links to related recipes on your blog',
+                priority: 'medium'
+            },
+            {
+                text: 'Use numbered lists for instructions to improve featured snippet chances',
+                priority: 'high'
+            }
+        ];
+
+        const seoTipsHtml = seoTips.map((tip, index) => `
+            <li>
+                <div class="tip-icon">✓</div>
+                <span>${tip.text}</span>
+            </li>
+        `).join('');
+
+        document.getElementById('seoTips').innerHTML = seoTipsHtml;
+
+        // Generate AEO Content
+        const aeoHtml = `
+            <h4 style="color: #2d3748; margin-bottom: 1rem; font-size: 1.2rem;">Optimized for Voice Search Queries:</h4>
+            <div style="background: #f7fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                <strong style="color: #667eea;">❓ "How do I make ${capitalizedName}?"</strong><br>
+                <p style="margin: 0.5rem 0 0 0; color: #4a5568;">
+                    Make sure your first paragraph answers this directly with prep time, cooking time, and difficulty level.
+                </p>
+            </div>
+            <div style="background: #f7fafc; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                <strong style="color: #667eea;">❓ "What ingredients do I need for ${capitalizedName}?"</strong><br>
+                <p style="margin: 0.5rem 0 0 0; color: #4a5568;">
+                    Create a clear ingredient list section that's easy to scan and read aloud.
+                </p>
+            </div>
+            <div style="background: #f7fafc; padding: 1rem; border-radius: 8px;">
+                <strong style="color: #667eea;">❓ "How long does ${capitalizedName} take to make?"</strong><br>
+                <p style="margin: 0.5rem 0 0 0; color: #4a5568;">
+                    Prominently display total time (prep + cook) near the top of your recipe.
+                </p>
+            </div>
+        `;
+
+        document.getElementById('aeoContent').innerHTML = aeoHtml;
+
+        // Generate Social Media Meta Tags
+        const socialCode = `<!-- Open Graph (Facebook, LinkedIn) -->
+```
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="${capitalizedName} - [Your Blog Name]" />
+<meta property="og:description" content="An amazing recipe that will delight your taste buds. Ready in 50 minutes!" />
+<meta property="og:image" content="https://yourblog.com/images/${recipeName}.jpg" />
+<meta property="og:url" content="${url}" />
+
+<!-- Twitter Card -->
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${capitalizedName}" />
+<meta name="twitter:description" content="An amazing recipe that will delight your taste buds. Ready in 50 minutes!" />
+<meta name="twitter:image" content="https://yourblog.com/images/${recipeName}.jpg" />
+
+<!-- Pinterest -->
+
+<meta property="og:see_also" content="${url}" />
+<meta name="pinterest-rich-pin" content="true" />`;
+
+```
+        document.getElementById('socialCode').textContent = socialCode;
+    }
+
+    function copyToClipboard(elementId, button) {
+        const element = document.getElementById(elementId);
+        const text = element.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = button.textContent;
+            button.textContent = '✓ Copied!';
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        });
+    }
+
+    // Auto-fill with example URL for demo
+    if (!recipeUrlInput.value) {
+        recipeUrlInput.value = 'https://yourblog.com/recipes/chocolate-chip-cookies';
+    }
+</script>
+```
+
+</body>
+</html>
