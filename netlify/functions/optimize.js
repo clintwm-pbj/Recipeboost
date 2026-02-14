@@ -45,8 +45,13 @@ Generate SEO optimization as a JSON object with this structure:
       }]
     });
 
-    const responseText = message.content[0].text;
-    const optimizationData = JSON.parse(responseText);
+    let responseText = message.content[0].text;
+
+// Strip markdown code blocks if present
+responseText = responseText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+
+const optimizationData = JSON.parse(responseText);
+
 
     return {
       statusCode: 200,
