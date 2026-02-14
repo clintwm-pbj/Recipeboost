@@ -4,960 +4,445 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecipeBoost - AI-Powered Recipe SEO Optimizer for Food Bloggers</title>
-    <meta name="description" content="Boost your recipe blog's Google rankings with AI-powered Schema markup, SEO optimization, and voice search readiness. Perfect for food bloggers who want more traffic.">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>RecipeBoost - Recipe SEO Optimizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #ec4899;
-            --success: #10b981;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --light: #f8fafc;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
 ```
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     body {
         font-family: 'Inter', sans-serif;
-        color: var(--dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-
-    /* Navigation */
-    .nav {
-        background: white;
-        padding: 1.5rem 2rem;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-    }
-
-    .nav-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        font-family: 'Sora', sans-serif;
-        font-size: 1.8rem;
-        font-weight: 800;
-        color: var(--primary);
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-    }
-
-    .nav-links a {
-        color: var(--gray);
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-        color: var(--primary);
-    }
-
-    .cta-btn {
-        background: var(--primary);
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-
-    .cta-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-    }
-
-    /* Hero Section */
-    .hero {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 6rem 2rem;
-        text-align: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h60v60H0z" fill="none"/><path d="M30 0L0 30l30 30 30-30z" fill="rgba(255,255,255,0.05)"/></svg>');
-        opacity: 0.3;
-    }
-
-    .hero-content {
-        max-width: 900px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-    }
-
-    .hero h1 {
-        font-family: 'Sora', sans-serif;
-        font-size: 4rem;
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-    }
-
-    .hero p {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        opacity: 0.95;
-    }
-
-    .hero-cta {
-        display: inline-block;
-        background: white;
-        color: var(--primary);
-        padding: 1.25rem 3rem;
-        border-radius: 50px;
-        font-size: 1.3rem;
-        font-weight: 700;
-        text-decoration: none;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
-    }
-
-    .hero-cta:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: 4rem;
-        margin-top: 3rem;
-    }
-
-    .stat {
-        text-align: center;
-    }
-
-    .stat-number {
-        font-size: 3rem;
-        font-weight: 800;
-        font-family: 'Sora', sans-serif;
-    }
-
-    .stat-label {
-        font-size: 1rem;
-        opacity: 0.9;
-    }
-
-    /* Social Proof */
-    .social-proof {
-        background: var(--light);
-        padding: 3rem 2rem;
-        text-align: center;
-    }
-
-    .social-proof h3 {
-        color: var(--gray);
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 2rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-    }
-
-    .proof-items {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        flex-wrap: wrap;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .proof-item {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        background: white;
-        padding: 1.5rem 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    .proof-icon {
-        font-size: 2.5rem;
-    }
-
-    .proof-text {
-        text-align: left;
-    }
-
-    .proof-text strong {
-        display: block;
-        font-size: 1.8rem;
-        color: var(--primary);
-        font-family: 'Sora', sans-serif;
-    }
-
-    .proof-text span {
-        color: var(--gray);
-        font-size: 0.9rem;
-    }
-
-    /* Problem Section */
-    .problem {
-        padding: 6rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .problem h2 {
-        font-family: 'Sora', sans-serif;
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 3rem;
-        color: var(--dark);
-    }
-
-    .problem-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .problem-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        border-left: 5px solid var(--secondary);
-    }
-
-    .problem-card h3 {
-        font-family: 'Sora', sans-serif;
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .problem-card p {
-        color: var(--gray);
-        line-height: 1.8;
-    }
-
-    /* Solution Section */
-    .solution {
-        background: linear-gradient(135deg, var(--light) 0%, white 100%);
-        padding: 6rem 2rem;
-    }
-
-    .solution-container {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .solution h2 {
-        font-family: 'Sora', sans-serif;
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .solution-subtitle {
-        text-align: center;
-        font-size: 1.3rem;
-        color: var(--gray);
-        margin-bottom: 4rem;
-    }
-
-    .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2.5rem;
-    }
-
-    .feature {
-        text-align: center;
+        min-height: 100vh;
         padding: 2rem;
     }
 
-    .feature-icon {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-    }
-
-    .feature h3 {
-        font-family: 'Sora', sans-serif;
-        font-size: 1.4rem;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .feature p {
-        color: var(--gray);
-        line-height: 1.8;
-    }
-
-    /* Demo Section */
-    .demo {
-        padding: 6rem 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .demo h2 {
-        font-family: 'Sora', sans-serif;
-        font-size: 3rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .demo-subtitle {
-        text-align: center;
-        font-size: 1.3rem;
-        color: var(--gray);
-        margin-bottom: 3rem;
-    }
-
-    .demo-showcase {
-        background: white;
-        border-radius: 25px;
-        padding: 3rem;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        border: 3px solid var(--primary);
-    }
-
-    .before-after {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 3rem;
-    }
-
-    .comparison {
-        padding: 2rem;
-        border-radius: 15px;
-    }
-
-    .comparison.before {
-        background: #fee;
-        border: 2px solid #fcc;
-    }
-
-    .comparison.after {
-        background: #efe;
-        border: 2px solid #cfc;
-    }
-
-    .comparison h3 {
-        font-family: 'Sora', sans-serif;
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .comparison ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    .comparison li {
-        padding: 0.75rem 0;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .comparison.before li::before {
-        content: '❌';
-    }
-
-    .comparison.after li::before {
-        content: '✅';
-    }
-
-    /* Tool Section */
-    .tool-section {
-        background: var(--light);
-        padding: 6rem 2rem;
-    }
-
-    .tool-container {
+    .container {
         max-width: 1000px;
         margin: 0 auto;
     }
 
-    .tool-section h2 {
-        font-family: 'Sora', sans-serif;
-        font-size: 3rem;
+    .header {
         text-align: center;
-        margin-bottom: 1rem;
-        color: var(--dark);
-    }
-
-    .tool-section p {
-        text-align: center;
-        font-size: 1.3rem;
-        color: var(--gray);
+        color: white;
         margin-bottom: 3rem;
     }
 
-    .tool-box {
+    .logo {
+        font-family: 'Sora', sans-serif;
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+        font-size: 1.3rem;
+        opacity: 0.95;
+    }
+
+    .main-card {
         background: white;
         border-radius: 20px;
         padding: 3rem;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
-    .input-group {
+    .input-section {
         margin-bottom: 2rem;
     }
 
-    .input-group label {
+    .input-label {
         display: block;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--dark);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #2d3748;
+        margin-bottom: 1rem;
     }
 
-    .input-group input {
+    .url-input {
         width: 100%;
         padding: 1.25rem;
-        border: 2px solid #e2e8f0;
-        border-radius: 12px;
         font-size: 1.1rem;
+        border: 3px solid #e2e8f0;
+        border-radius: 12px;
         font-family: inherit;
         transition: all 0.3s;
     }
 
-    .input-group input:focus {
+    .url-input:focus {
         outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+        border-color: #667eea;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
     }
 
-    .optimize-btn {
+    .analyze-btn {
         width: 100%;
         padding: 1.5rem;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        color: white;
-        border: none;
-        border-radius: 12px;
         font-size: 1.3rem;
         font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 12px;
         cursor: pointer;
         transition: all 0.3s;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        margin-top: 1rem;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
     }
 
-    .optimize-btn:hover {
+    .analyze-btn:hover:not(:disabled) {
         transform: translateY(-2px);
-        box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.5);
     }
 
-    /* Pricing */
-    .pricing {
-        padding: 6rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
+    .analyze-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
-    .pricing h2 {
-        font-family: 'Sora', sans-serif;
-        font-size: 3rem;
+    .status-box {
+        display: none;
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin-top: 2rem;
         text-align: center;
-        margin-bottom: 3rem;
-        color: var(--dark);
     }
 
-    .pricing-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
+    .status-box.loading {
+        display: block;
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        color: #856404;
     }
 
-    .pricing-card {
-        background: white;
-        padding: 3rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        border: 3px solid transparent;
-        transition: all 0.3s;
+    .status-box.error {
+        display: block;
+        background: #f8d7da;
+        border: 2px solid #dc3545;
+        color: #721c24;
     }
 
-    .pricing-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    .status-box.success {
+        display: block;
+        background: #d4edda;
+        border: 2px solid #28a745;
+        color: #155724;
     }
 
-    .pricing-card.popular {
-        border-color: var(--primary);
-        transform: scale(1.05);
+    .spinner {
+        border: 4px solid #f3f4f6;
+        border-top: 4px solid #667eea;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
     }
 
-    .pricing-card .badge {
-        background: var(--primary);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        display: inline-block;
-        margin-bottom: 1rem;
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
     }
 
-    .pricing-card h3 {
+    .results {
+        display: none;
+        margin-top: 3rem;
+    }
+
+    .results.active {
+        display: block;
+    }
+
+    .result-card {
+        background: #f8fafc;
+        border-radius: 15px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-left: 5px solid #667eea;
+    }
+
+    .result-title {
         font-family: 'Sora', sans-serif;
-        font-size: 1.8rem;
+        font-size: 1.5rem;
+        color: #2d3748;
         margin-bottom: 1rem;
-    }
-
-    .price {
-        font-size: 4rem;
-        font-weight: 800;
-        font-family: 'Sora', sans-serif;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .price-period {
-        color: var(--gray);
-        font-size: 1.1rem;
-    }
-
-    .pricing-features {
-        list-style: none;
-        padding: 0;
-        margin: 2rem 0;
-        text-align: left;
-    }
-
-    .pricing-features li {
-        padding: 0.75rem 0;
         display: flex;
         align-items: center;
+        justify-content: space-between;
+    }
+
+    .copy-btn {
+        padding: 0.5rem 1rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+        background: #5568d3;
+    }
+
+    .copy-btn.copied {
+        background: #28a745;
+    }
+
+    .code-box {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 2px solid #e2e8f0;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        max-height: 400px;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .tips-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .tips-list li {
+        background: white;
+        padding: 1rem;
+        margin-bottom: 0.75rem;
+        border-radius: 10px;
+        display: flex;
+        align-items: flex-start;
         gap: 0.75rem;
     }
 
-    .pricing-features li::before {
-        content: '✓';
-        color: var(--success);
-        font-weight: 700;
-        font-size: 1.3rem;
-    }
-
-    .pricing-btn {
-        width: 100%;
-        padding: 1.25rem;
-        background: var(--primary);
+    .tip-icon {
+        background: #28a745;
         color: white;
-        border: none;
-        border-radius: 12px;
-        font-size: 1.2rem;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s;
+        flex-shrink: 0;
     }
 
-    .pricing-btn:hover {
-        background: var(--primary-dark);
-        transform: translateY(-2px);
+    .debug-info {
+        background: #fff3cd;
+        border: 2px solid #ffc107;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        font-family: 'Courier New', monospace;
+        display: none;
     }
 
-    /* CTA Section */
-    .final-cta {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 6rem 2rem;
-        text-align: center;
-        color: white;
-    }
-
-    .final-cta h2 {
-        font-family: 'Sora', sans-serif;
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .final-cta p {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        opacity: 0.95;
-    }
-
-    .final-cta-btn {
-        display: inline-block;
-        background: white;
-        color: var(--primary);
-        padding: 1.5rem 4rem;
-        border-radius: 50px;
-        font-size: 1.4rem;
-        font-weight: 700;
-        text-decoration: none;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s;
-    }
-
-    .final-cta-btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Footer */
-    .footer {
-        background: var(--dark);
-        color: white;
-        padding: 3rem 2rem;
-        text-align: center;
-    }
-
-    .footer p {
-        opacity: 0.8;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-        }
-
-        .hero-stats {
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .before-after {
-            grid-template-columns: 1fr;
-        }
-
-        .nav-links {
-            display: none;
-        }
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .hero-content, .problem, .solution, .demo, .pricing {
-        animation: fadeInUp 0.8s ease-out;
+    .debug-info.show {
+        display: block;
     }
 </style>
 ```
 
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
+    <div class="container">
+        <div class="header">
             <div class="logo">🚀 RecipeBoost</div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#demo">Demo</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#tool" class="cta-btn">Try Free Tool</a>
-            </div>
+            <p class="tagline">AI-Powered Recipe SEO Optimization</p>
         </div>
-    </nav>
 
 ```
-<!-- Hero Section -->
-<section class="hero">
-    <div class="hero-content">
-        <h1>Rank Higher on Google.<br>Get More Traffic.</h1>
-        <p>AI-powered SEO optimization for food bloggers. Generate perfect Schema markup, optimize for voice search, and dominate recipe rankings in minutes.</p>
-        <a href="#tool" class="hero-cta">Try It Free →</a>
-        
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-number">3x</div>
-                <div class="stat-label">More Organic Traffic</div>
+    <div class="main-card">
+        <div class="input-section">
+            <label class="input-label">Enter Your Recipe URL</label>
+            <input 
+                type="url" 
+                class="url-input" 
+                id="recipeUrl" 
+                placeholder="https://yourblog.com/recipes/chocolate-cake">
+        </div>
+
+        <button class="analyze-btn" id="analyzeBtn">
+            🔍 Analyze & Optimize Recipe
+        </button>
+
+        <div class="status-box" id="statusBox"></div>
+
+        <div class="debug-info" id="debugInfo"></div>
+
+        <div class="results" id="results">
+            <!-- Schema Markup -->
+            <div class="result-card">
+                <div class="result-title">
+                    <span>📊 Schema Markup (JSON-LD)</span>
+                    <button class="copy-btn" onclick="copyCode('schemaCode', this)">Copy Code</button>
+                </div>
+                <div class="code-box" id="schemaCode"></div>
             </div>
-            <div class="stat">
-                <div class="stat-number">10min</div>
-                <div class="stat-label">Setup Time</div>
+
+            <!-- SEO Tips -->
+            <div class="result-card">
+                <div class="result-title">
+                    <span>💡 SEO Recommendations</span>
+                </div>
+                <ul class="tips-list" id="seoTips"></ul>
             </div>
-            <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Google Compliant</div>
+
+            <!-- Voice Search -->
+            <div class="result-card">
+                <div class="result-title">
+                    <span>🗣️ Voice Search Optimization</span>
+                </div>
+                <div id="voiceSearch"></div>
+            </div>
+
+            <!-- Social Tags -->
+            <div class="result-card">
+                <div class="result-title">
+                    <span>📱 Social Media Tags</span>
+                    <button class="copy-btn" onclick="copyCode('socialTags', this)">Copy Code</button>
+                </div>
+                <div class="code-box" id="socialTags"></div>
             </div>
         </div>
     </div>
-</section>
-
-<!-- Social Proof -->
-<section class="social-proof">
-    <h3>Trusted by Food Bloggers Everywhere</h3>
-    <div class="proof-items">
-        <div class="proof-item">
-            <div class="proof-icon">📈</div>
-            <div class="proof-text">
-                <strong>287%</strong>
-                <span>Avg Traffic Increase</span>
-            </div>
-        </div>
-        <div class="proof-item">
-            <div class="proof-icon">⭐</div>
-            <div class="proof-text">
-                <strong>4.9/5</strong>
-                <span>User Rating</span>
-            </div>
-        </div>
-        <div class="proof-item">
-            <div class="proof-icon">🎯</div>
-            <div class="proof-text">
-                <strong>10K+</strong>
-                <span>Recipes Optimized</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Problem Section -->
-<section class="problem">
-    <h2>Food Bloggers Face Real SEO Challenges</h2>
-    <div class="problem-grid">
-        <div class="problem-card">
-            <h3>😓 Schema Markup is Confusing</h3>
-            <p>You know you need it for Google's recipe cards, but the technical JSON-LD code feels like a foreign language.</p>
-        </div>
-        <div class="problem-card">
-            <h3>⏰ SEO Takes Too Much Time</h3>
-            <p>Between recipe testing, photography, and writing, who has hours to optimize meta tags and structured data?</p>
-        </div>
-        <div class="problem-card">
-            <h3>📉 Recipes Don't Rank</h3>
-            <p>You pour your heart into content, but it gets buried on page 3 while competitors dominate featured snippets.</p>
-        </div>
-    </div>
-</section>
-
-<!-- Solution Section -->
-<section id="features" class="solution">
-    <div class="solution-container">
-        <h2>RecipeBoost Solves All of This</h2>
-        <p class="solution-subtitle">Paste your recipe URL. Get Google-perfect optimization in 60 seconds.</p>
-        
-        <div class="features-grid">
-            <div class="feature">
-                <div class="feature-icon">🎯</div>
-                <h3>Auto Schema Generation</h3>
-                <p>Perfect JSON-LD markup generated instantly. Just copy and paste into your site. Google will love it.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🗣️</div>
-                <h3>Voice Search Ready</h3>
-                <p>Optimize for "Hey Alexa" and "OK Google" queries. Capture voice search traffic automatically.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📱</div>
-                <h3>Social Media Tags</h3>
-                <p>Beautiful Open Graph and Twitter Card tags. Your recipes look stunning when shared.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💡</div>
-                <h3>SEO Recommendations</h3>
-                <p>AI analyzes your content and gives actionable tips to rank higher. No guesswork.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>Lightning Fast</h3>
-                <p>What used to take hours now takes 60 seconds. Optimize an entire cookbook in one afternoon.</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔄</div>
-                <h3>Unlimited Updates</h3>
-                <p>Recipe changed? Re-optimize instantly. Keep your SEO fresh as your content evolves.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Demo Section -->
-<section id="demo" class="demo">
-    <h2>See the Difference</h2>
-    <p class="demo-subtitle">Real results from a real food blog optimized with RecipeBoost</p>
-    
-    <div class="demo-showcase">
-        <div class="before-after">
-            <div class="comparison before">
-                <h3>❌ Before RecipeBoost</h3>
-                <ul>
-                    <li>No Schema markup</li>
-                    <li>Generic meta descriptions</li>
-                    <li>No voice search optimization</li>
-                    <li>Poor social media previews</li>
-                    <li>Page 3-5 Google rankings</li>
-                    <li>150 visitors/month</li>
-                </ul>
-            </div>
-            <div class="comparison after">
-                <h3>✅ After RecipeBoost</h3>
-                <ul>
-                    <li>Perfect Schema JSON-LD</li>
-                    <li>Keyword-optimized meta tags</li>
-                    <li>Voice search featured snippets</li>
-                    <li>Beautiful social cards</li>
-                    <li>Page 1 rankings (top 3!)</li>
-                    <li>1,200+ visitors/month</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div style="text-align: center; padding: 2rem; background: var(--light); border-radius: 15px;">
-            <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 1rem;">
-                <strong>Case Study: PB&J Recipe Blog</strong>
-            </p>
-            <a href="https://timely-torte-cb24b7.netlify.app" target="_blank" style="color: var(--primary); font-weight: 600; font-size: 1.1rem; text-decoration: none;">
-                View Live Example →
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Tool Section -->
-<section id="tool" class="tool-section">
-    <div class="tool-container">
-        <h2>Try It Free Right Now</h2>
-        <p>Paste any recipe URL and see what RecipeBoost can do for you.</p>
-        
-        <div class="tool-box">
-            <div class="input-group">
-                <label for="recipeUrl">Your Recipe URL</label>
-                <input 
-                    type="url" 
-                    id="recipeUrl" 
-                    placeholder="https://yourblog.com/recipes/chocolate-cake"
-                    value="https://timely-torte-cb24b7.netlify.app">
-            </div>
-            
-            <button class="optimize-btn" onclick="window.open('recipe-seo-optimizer.html', '_blank')">
-                🚀 Optimize My Recipe
-            </button>
-            
-            <p style="text-align: center; margin-top: 1.5rem; color: var(--gray);">
-                No credit card required • See results instantly • 100% free to try
-            </p>
-        </div>
-    </div>
-</section>
-
-<!-- Pricing -->
-<section id="pricing" class="pricing">
-    <h2>Simple, Transparent Pricing</h2>
-    
-    <div class="pricing-cards">
-        <div class="pricing-card">
-            <h3>Free Trial</h3>
-            <div class="price">$0</div>
-            <div class="price-period">7 days</div>
-            <ul class="pricing-features">
-                <li>5 recipe optimizations</li>
-                <li>Schema markup generation</li>
-                <li>SEO recommendations</li>
-                <li>Email support</li>
-            </ul>
-            <button class="pricing-btn">Start Free Trial</button>
-        </div>
-        
-        <div class="pricing-card popular">
-            <div class="badge">MOST POPULAR</div>
-            <h3>Pro</h3>
-            <div class="price">$29</div>
-            <div class="price-period">per month</div>
-            <ul class="pricing-features">
-                <li>Unlimited optimizations</li>
-                <li>Auto Schema injection</li>
-                <li>Voice search optimization</li>
-                <li>Social media tags</li>
-                <li>Real-time SEO scoring</li>
-                <li>Priority support</li>
-            </ul>
-            <button class="pricing-btn">Get Started</button>
-        </div>
-        
-        <div class="pricing-card">
-            <h3>Agency</h3>
-            <div class="price">$99</div>
-            <div class="price-period">per month</div>
-            <ul class="pricing-features">
-                <li>Everything in Pro</li>
-                <li>10 client sites</li>
-                <li>White-label reports</li>
-                <li>API access</li>
-                <li>Dedicated account manager</li>
-            </ul>
-            <button class="pricing-btn">Contact Sales</button>
-        </div>
-    </div>
-</section>
-
-<!-- Final CTA -->
-<section class="final-cta">
-    <h2>Ready to Boost Your Recipe Traffic?</h2>
-    <p>Join hundreds of food bloggers already ranking #1 on Google</p>
-    <a href="#tool" class="final-cta-btn">Start Optimizing Free →</a>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <p>© 2026 RecipeBoost. Made with ❤️ for food bloggers everywhere.</p>
-    <p style="margin-top: 1rem; font-size: 0.9rem;">
-        Questions? Email us at hello@recipeboost.com
-    </p>
-</footer>
+</div>
 
 <script>
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const recipeUrlInput = document.getElementById('recipeUrl');
+    const statusBox = document.getElementById('statusBox');
+    const results = document.getElementById('results');
+    const debugInfo = document.getElementById('debugInfo');
+
+    analyzeBtn.addEventListener('click', analyzeRecipe);
+
+    async function analyzeRecipe() {
+        const url = recipeUrlInput.value.trim();
+
+        if (!url) {
+            showStatus('error', 'Please enter a recipe URL');
+            return;
+        }
+
+        // Reset
+        results.classList.remove('active');
+        analyzeBtn.disabled = true;
+        showStatus('loading', 'Analyzing your recipe with AI...');
+        debugInfo.classList.remove('show');
+
+        try {
+            // Log what we're doing
+            console.log('Calling function with URL:', url);
+            
+            const response = await fetch('/.netlify/functions/optimize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ recipeUrl: url })
+            });
+
+            console.log('Response status:', response.status);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('Error response:', errorText);
+                throw new Error(`Server error: ${response.status} - ${errorText}`);
             }
+
+            const data = await response.json();
+            console.log('Success! Data received:', data);
+
+            displayResults(data);
+            showStatus('success', '✅ Recipe optimized successfully!');
+            results.classList.add('active');
+
+            // Scroll to results
+            setTimeout(() => {
+                results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+
+        } catch (error) {
+            console.error('Error:', error);
+            showStatus('error', `Error: ${error.message}`);
+            
+            // Show debug info
+            debugInfo.textContent = `Debug Info:\n${error.message}\n\nCheck the browser console for more details.`;
+            debugInfo.classList.add('show');
+        } finally {
+            analyzeBtn.disabled = false;
+        }
+    }
+
+    function showStatus(type, message) {
+        statusBox.className = `status-box ${type}`;
+        
+        if (type === 'loading') {
+            statusBox.innerHTML = `
+                <div class="spinner"></div>
+                <div>${message}</div>
+            `;
+        } else {
+            statusBox.innerHTML = message;
+        }
+    }
+
+    function displayResults(data) {
+        // Schema
+        document.getElementById('schemaCode').textContent = data.schema || 'No schema generated';
+
+        // SEO Tips
+        const tipsHtml = (data.seoTips || []).map(tip => `
+            <li>
+                <div class="tip-icon">✓</div>
+                <span>${tip}</span>
+            </li>
+        `).join('');
+        document.getElementById('seoTips').innerHTML = tipsHtml || '<li>No tips available</li>';
+
+        // Voice Search
+        const voiceHtml = (data.aeoOptimization?.queries || []).map(q => `
+            <div style="background: white; padding: 1rem; margin-bottom: 1rem; border-radius: 8px;">
+                <strong style="color: #667eea;">❓ ${q.question}</strong><br>
+                <p style="margin: 0.5rem 0 0 0; color: #4a5568;">${q.optimization}</p>
+            </div>
+        `).join('');
+        document.getElementById('voiceSearch').innerHTML = voiceHtml || '<p>No voice search data available</p>';
+
+        // Social Tags
+        document.getElementById('socialTags').textContent = data.socialTags || 'No social tags generated';
+    }
+
+    function copyCode(elementId, button) {
+        const element = document.getElementById(elementId);
+        const text = element.textContent;
+
+        navigator.clipboard.writeText(text).then(() => {
+            const originalText = button.textContent;
+            button.textContent = '✓ Copied!';
+            button.classList.add('copied');
+
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        }).catch(err => {
+            console.error('Copy failed:', err);
+            alert('Failed to copy. Please select and copy manually.');
         });
-    });
+    }
 </script>
 ```
 
